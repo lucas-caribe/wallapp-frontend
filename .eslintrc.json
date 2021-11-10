@@ -20,6 +20,7 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": ["error", { "singleQuote": true }]
+        "prettier/prettier": ["error", { "singleQuote": true }],
+        "react/jsx-props-no-spreading": "off"
     }
 }
