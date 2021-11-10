@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Post from '../Post';
 
@@ -11,9 +11,16 @@ const postList = [
   },
 ];
 
-/* eslint-disable */
 function PostList() {
-  const [posts, setPosts] = useState(postList);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setPosts(postList);
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div>
