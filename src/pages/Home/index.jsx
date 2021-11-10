@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Post from '../components/Post';
-import PostInput from '../components/PostInput';
+import Post from '../../components/Post';
+import PostInput from '../../components/PostInput';
 
 function Home() {
   return (
