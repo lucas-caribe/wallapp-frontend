@@ -1,10 +1,13 @@
 import React from 'react';
 
+import Post from '../components/Post';
+import PostInput from '../components/PostInput';
+
 function Home() {
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Home</p>
+      <PostInput />
+      <Post />
     </div>
   );
 }
