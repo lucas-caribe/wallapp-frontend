@@ -6,9 +6,9 @@ const generateHeaders = () => ({
 
 export const getPosts = async () => {
   try {
-    const { data } = await wallApi.get('posts');
+    const response = await wallApi.get('posts');
 
-    return data;
+    return response.data;
   } catch (error) {
     console.log(error);
     return [];
@@ -17,4 +17,16 @@ export const getPosts = async () => {
 
 export const createPost = (postData) => {
   wallApi.post('posts/', postData, generateHeaders());
+};
+
+export const userLogin = async (userCredentials) => {
+  try {
+    const response = await wallApi.post('users/login/', userCredentials);
+    const { key: token } = response.data;
+
+    return token;
+  } catch (error) {
+    console.log(error);
+    return { error: 'Incorrect username or password' };
+  }
 };

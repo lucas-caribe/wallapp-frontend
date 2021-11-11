@@ -1,18 +1,30 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+
+import { userLogin } from '../../helpers/wallApiHelpers';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-function Login() {
+function LogIn() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log('user data: ', data);
+  const onSubmit = async ({ username, password }) => {
+    const token = await userLogin({ username, password });
+
+    if (token.error) {
+      global.alert(token.error);
+    } else {
+      sessionStorage.username = username;
+      sessionStorage.token = token;
+      navigate('/', { replace: true });
+    }
   };
 
   return (
@@ -33,9 +45,9 @@ function Login() {
         }
         error={errors.password}
       />
-      <Button>Login</Button>
+      <Button>Log In</Button>
     </form>
   );
 }
 
-export default Login;
+export default LogIn;
