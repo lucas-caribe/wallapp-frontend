@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import getTimeSince from '../../utils/getTimeSince';
 
 function Post({ post }) {
-  const { owner, body, createdAt } = post;
+  const { owner, body, created_at: createdAt } = post;
   const timeSince = getTimeSince(new Date(createdAt));
 
   return (
@@ -25,9 +25,9 @@ function Post({ post }) {
 
 Post.propTypes = {
   post: PropTypes.shape({
-    owner: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
   }).isRequired,
 };
 
