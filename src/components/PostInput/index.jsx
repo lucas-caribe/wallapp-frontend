@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 
 function PostInput() {
+  const [isValidPost, setIsValidPost] = useState(false);
   const [postBody, setPostBody] = useState('');
+  const [remainingChars, setRemainingChars] = useState(250);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    global.alert('submitted');
+    if (postBody.length) {
+      console.log(postBody);
+    } else {
+      setIsValidPost(false);
+    }
+  };
+
+  const handleChange = ({ target }) => {
+    const { value } = target;
+    setPostBody(value);
+    setIsValidPost(value.length);
+    setRemainingChars(250 - value.length);
   };
 
   return (
@@ -16,11 +29,13 @@ function PostInput() {
         rows="10"
         maxLength="250"
         value={postBody}
-        onChange={({ target }) => setPostBody(target.value)}
+        onChange={handleChange}
       />
       <div className="form-controls">
-        <span>250</span>
-        <button type="submit">post</button>
+        <span>{remainingChars}</span>
+        <button disabled={!isValidPost} type="submit">
+          post
+        </button>
       </div>
     </form>
   );
