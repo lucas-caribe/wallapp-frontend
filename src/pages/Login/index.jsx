@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    global.alert('logged in');
+  const onSubmit = (data) => {
+    console.log('user data: ', data);
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
       <Input
         placeholder="username"
         type="text"
-        value={username}
-        handleChange={({ target }) => setUsername(target.value)}
+        registerCallback={() =>
+          register('username', { required: 'You must specify a username' })
+        }
+        error={errors.username}
       />
       <Input
         placeholder="password"
         type="password"
-        value={password}
-        handleChange={({ target }) => setPassword(target.value)}
+        registerCallback={() =>
+          register('password', { required: 'You must specify a password' })
+        }
+        error={errors.password}
       />
       <Button>Login</Button>
     </form>

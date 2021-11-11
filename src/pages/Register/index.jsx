@@ -3,6 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 function Register() {
   const {
@@ -13,41 +14,49 @@ function Register() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(errors);
+    console.log('user data: ', data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input
+      <Input
         type="text"
         placeholder="username"
-        {...register('username', { required: true })}
+        registerCallback={() =>
+          register('username', { required: 'You must specify a username' })
+        }
+        error={errors.username}
       />
-      {errors.username && <span>You must specify a username</span>}
 
-      <input
+      <Input
         type="email"
         placeholder="email@example.com"
-        {...register('email', { required: true })}
+        registerCallback={() =>
+          register('email', { required: 'You must specify an email' })
+        }
+        error={errors.email}
       />
-      {errors.email && <span>You must specify an email</span>}
 
-      <input
+      <Input
         type="password"
         placeholder="password"
-        {...register('password1', { required: true })}
+        registerCallback={() =>
+          register('password1', { required: 'You must specify a password' })
+        }
+        error={errors.password1}
       />
-      {errors.password1 && <span>You must specify a password</span>}
 
-      <input
+      <Input
         type="password"
         placeholder="password confirmation"
-        {...register('password2', {
-          validate: (value) => value === getValues('password1'),
-        })}
+        registerCallback={() =>
+          register('password2', {
+            validate: (value) =>
+              value === getValues('password1') || 'Passwords do not match',
+          })
+        }
+        error={errors.password2}
       />
-      {errors.password2 && <span>Passwords do not match</span>}
 
       <Button>Sign Up</Button>
     </form>
