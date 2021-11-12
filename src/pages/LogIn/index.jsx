@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { userLogin } from '../../helpers/wallApiHelpers';
+import UserContext from '../../context/UserContext';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 function LogIn() {
+  const { logIn } = useContext(UserContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
 
   const onSubmit = async ({ username, password }) => {
-    const token = await userLogin({ username, password });
+    const status = await logIn({ username, password });
 
-    if (token.error) {
-      global.alert(token.error);
-    } else {
-      sessionStorage.username = username;
-      sessionStorage.token = token;
+    if (status) {
       navigate('/', { replace: true });
+    } else {
+      global.alert('Incorrect username or password');
     }
   };
 

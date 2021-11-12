@@ -24,9 +24,18 @@ export const userLogin = async (userCredentials) => {
     const response = await wallApi.post('users/login/', userCredentials);
     const { key: token } = response.data;
 
-    return token;
+    sessionStorage.token = token;
+    sessionStorage.username = userCredentials.username;
+
+    return true;
   } catch (error) {
     console.log(error);
-    return { error: 'Incorrect username or password' };
+    return false;
   }
+};
+
+export const userLogout = () => {
+  wallApi.post('/users/logout/');
+  sessionStorage.removeItem('username');
+  sessionStorage.removeItem('token');
 };
