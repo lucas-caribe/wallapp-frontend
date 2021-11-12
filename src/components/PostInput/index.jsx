@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import PostContext from '../../context/PostContext';
+
+import { createPost } from '../../helpers/wallApiHelpers';
 
 function PostInput() {
   const [isValidPost, setIsValidPost] = useState(false);
   const [postBody, setPostBody] = useState('');
   const [remainingChars, setRemainingChars] = useState(250);
 
+  const { refreshPosts } = useContext(PostContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (postBody.length) {
-      console.log(postBody);
-    } else {
+
+    if (isValidPost) {
+      createPost({ body: postBody });
+      setPostBody('');
+      setRemainingChars(250);
       setIsValidPost(false);
+      refreshPosts();
     }
   };
 

@@ -1,25 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+
+import PostContext from '../../context/PostContext';
 
 import Post from '../Post';
 
-import { getPosts } from '../../helpers/wallApiHelpers';
-
 function PostList() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const data = await getPosts();
-      setPosts(data);
-    };
-
-    fetchPosts();
-  }, []);
+  const { postList } = useContext(PostContext);
 
   return (
     <div>
       <h1>PostList</h1>
-      {posts.map((post) => (
+      {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </div>

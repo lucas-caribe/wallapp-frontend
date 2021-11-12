@@ -1,8 +1,14 @@
 import wallApi from '../services/wallApi';
 
-const generateHeaders = () => ({
-  Authorization: `Token ${sessionStorage.token}`,
-});
+const generateHeaders = () => {
+  const csrfToken = document.cookie.match(/(?<=csrftoken=).*(?<!;)/g)[0];
+  const sessionToken = sessionStorage.token;
+
+  return {
+    Authorization: `Token ${sessionToken}`,
+    'X-CSRFToken': csrfToken,
+  };
+};
 
 export const getPosts = async () => {
   try {
@@ -15,8 +21,12 @@ export const getPosts = async () => {
   }
 };
 
-export const createPost = (postData) => {
-  wallApi.post('posts/', postData, generateHeaders());
+export const createPost = async (postData) => {
+  try {
+    await wallApi.post('posts/', postData, generateHeaders());
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const userLogin = async (userCredentials) => {

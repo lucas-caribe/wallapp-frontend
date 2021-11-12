@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import UserProvider from './context/UserProvider';
+import PostProvider from './context/PostProvider';
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';
@@ -10,11 +11,13 @@ import './index.css';
 
 ReactDOM.render(
   <UserProvider>
-    <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </BrowserRouter>
+    <PostProvider>
+      <BrowserRouter>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </BrowserRouter>
+    </PostProvider>
   </UserProvider>,
   document.getElementById('root')
 );
