@@ -1,5 +1,61 @@
 .post {
+  position: relative;
   padding: 1em;
   background: var(--secondary-color);
   border-radius: 0.5em;
+}
+
+/* post header */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.user-image {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  background: gray;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.post-username {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.posted-time {
+  filter: opacity(0.8);
+  font-size: 0.8em;
+}
+
+/* toggle edit */
+.toggle-edit-section {
+  position: absolute;
+  font-size: 1.2em;
+  right: 1em;
+  top: 1em;
+}
+
+.edit-section {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 1.5em;
+  top: 2.5em;
+  visibility: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.edit-section > button {
+  background: var(--secondary-color);
+  border: none;
+  padding: 0.5em;
 }

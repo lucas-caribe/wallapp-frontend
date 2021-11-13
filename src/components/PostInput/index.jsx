@@ -22,6 +22,7 @@ function PostInput() {
   useEffect(() => {
     if (isEditing) {
       setPostBody(postToEdit.body);
+      setIsValidPost(true);
     }
   }, [isEditing]);
 

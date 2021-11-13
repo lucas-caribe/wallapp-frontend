@@ -60,10 +60,6 @@ nav > a {
   color: var(--main-font-color);
 }
 
-.visible {
-  visibility: visible;
-}
-
 .logout-button, .user-section {
   display: grid;
   grid-template-columns: 0.3fr 3fr;
