@@ -6,3 +6,7 @@
 .visible {
   visibility: visible;
 }
+
+.main-content {
+  padding: 1em;
+}

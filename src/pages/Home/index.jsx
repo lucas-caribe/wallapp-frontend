@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import UserContext from '../../context/UserContext';
 
 import PostList from '../../components/PostList';
-import PostInput from '../../components/PostInput';
+import PostForm from '../../components/PostForm';
 
 function Home() {
   const { isLoggedIn } = useContext(UserContext);
 
   return (
-    <div>
-      {isLoggedIn && <PostInput />}
+    <div className="main-content">
+      {isLoggedIn && <PostForm />}
       <PostList />
     </div>
   );

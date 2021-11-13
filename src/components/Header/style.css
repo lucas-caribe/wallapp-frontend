@@ -30,11 +30,11 @@ header .container {
 
 /* toggle-menu */
 .toggle-menu {
-  font-size: 1.5em;
-  color: var(--main-font-color);
   position: absolute;
   left: 0.6em;
   top: 50%;
+  font-size: 1.5em;
+  color: var(--main-font-color);
   transform: translateY(-50%);
 }
 
@@ -44,17 +44,17 @@ nav {
   left: 0;
   top: 100%;
   width: 100%;
+  z-index: 99;
   display: flex;
   flex-direction: column;
+  padding: 1em 2em;
+  gap: 1em;
   background: var(--secondary-color);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   visibility: hidden;
-  padding: 1em 2em;
-  gap: 1em;
 }
 
 nav > a {
-  /* padding: 1em 2em; */
   position: relative;
   text-decoration: none;
   color: var(--main-font-color);
@@ -63,7 +63,6 @@ nav > a {
 .logout-button, .user-section {
   display: grid;
   grid-template-columns: 0.3fr 3fr;
-  gap: 1em;
   font-size: 1em;
   color: var(--main-font-color);
   border: none;

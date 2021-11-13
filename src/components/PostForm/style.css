@@ -1,0 +1,43 @@
+.post-form {
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary-color);
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+}
+
+.textarea-container {
+  display: flex;
+}
+
+.textarea-container > textarea {
+  font-size: 1em;
+  border-radius: 0.5em;
+  padding: 1em;
+  border: none;
+  resize: none;
+  width: 100%;
+}
+
+.textarea-container > textarea:focus-visible {
+  outline: none;
+}
+
+.form-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+}
+
+.form-controls > button {
+  display: flex;
+  color: var(--main-font-color);
+  font-size: 1.5em;
+  background: none;
+  border: none;
+}
+
+.form-controls > button:disabled {
+  filter: opacity(0.5);
+}

@@ -28,10 +28,16 @@ function Post({ post }) {
   }, [username, isLoggedIn]);
 
   const handleDelete = async () => {
+    setIsEditSectionVisible(false);
     if (global.confirm('Are you sure?')) {
       await deletePost(id);
       await refreshPosts();
     }
+  };
+
+  const handleEdit = () => {
+    setIsEditSectionVisible(false);
+    setEdit(post);
   };
 
   const renderEditSection = () => (
@@ -41,7 +47,7 @@ function Post({ post }) {
         onClick={() => setIsEditSectionVisible(!isEditSectionVisible)}
       />
       <div className={`edit-section ${isEditSectionVisible ? 'visible' : ''}`}>
-        <button type="button" onClick={() => setEdit(post)}>
+        <button type="button" onClick={handleEdit}>
           edit
         </button>
         <hr />

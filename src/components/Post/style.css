@@ -51,11 +51,13 @@
   right: 1.5em;
   top: 2.5em;
   visibility: hidden;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background: var(--main-blue);
+  border-radius: 0.2em;
 }
 
 .edit-section > button {
-  background: var(--secondary-color);
+  background: none;
+  color: var(--secondary-color);
   border: none;
   padding: 0.5em;
 }
