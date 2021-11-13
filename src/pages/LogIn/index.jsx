@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -18,6 +18,12 @@ function LogIn() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    if (sessionStorage.token) {
+      navigate('/', { replace: true });
+    }
+  }, []);
 
   const onSubmit = async ({ username, password }) => {
     const status = await logIn({ username, password });

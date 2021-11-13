@@ -1,9 +1,12 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+
+import UserContext from '../../context/UserContext';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import Loading from '../../components/Loading';
 
 function Register() {
   const {
@@ -12,52 +15,69 @@ function Register() {
     getValues,
     formState: { errors },
   } = useForm();
+  const { isFetching, register: userRegister } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log('user data: ', data);
+  useEffect(() => {
+    if (sessionStorage.token) {
+      navigate('/', { replace: true });
+    }
+  }, []);
+
+  const onSubmit = async (data) => {
+    const status = await userRegister(data);
+
+    if (status) {
+      navigate('/', { replace: true });
+    } else {
+      global.alert('Something went wrong!');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        type="text"
-        placeholder="username"
-        registerCallback={() =>
-          register('username', { required: 'You must specify a username' })
-        }
-        error={errors.username}
-      />
+    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+      {isFetching && <Loading />}
+      <h2>Sign Up</h2>
+      <div className="login-inputs">
+        <Input
+          type="text"
+          placeholder="username"
+          registerCallback={() =>
+            register('username', { required: 'You must specify a username' })
+          }
+          error={errors.username}
+        />
 
-      <Input
-        type="email"
-        placeholder="email@example.com"
-        registerCallback={() =>
-          register('email', { required: 'You must specify an email' })
-        }
-        error={errors.email}
-      />
+        <Input
+          type="email"
+          placeholder="email@example.com"
+          registerCallback={() =>
+            register('email', { required: 'You must specify an email' })
+          }
+          error={errors.email}
+        />
 
-      <Input
-        type="password"
-        placeholder="password"
-        registerCallback={() =>
-          register('password1', { required: 'You must specify a password' })
-        }
-        error={errors.password1}
-      />
+        <Input
+          type="password"
+          placeholder="password"
+          registerCallback={() =>
+            register('password1', { required: 'You must specify a password' })
+          }
+          error={errors.password1}
+        />
 
-      <Input
-        type="password"
-        placeholder="password confirmation"
-        registerCallback={() =>
-          register('password2', {
-            validate: (value) =>
-              value === getValues('password1') || 'Passwords do not match',
-          })
-        }
-        error={errors.password2}
-      />
-
+        <Input
+          type="password"
+          placeholder="password confirmation"
+          registerCallback={() =>
+            register('password2', {
+              validate: (value) =>
+                value === getValues('password1') || 'Passwords do not match',
+            })
+          }
+          error={errors.password2}
+        />
+      </div>
       <Button>Sign Up</Button>
     </form>
   );

@@ -59,3 +59,18 @@ export const userLogout = () => {
   sessionStorage.removeItem('username');
   sessionStorage.removeItem('token');
 };
+
+export const userRegister = async (userData) => {
+  try {
+    const response = await wallApi.post('users/registration/', userData);
+    const { key: token } = response.data;
+
+    sessionStorage.token = token;
+    sessionStorage.username = userData.username;
+
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};

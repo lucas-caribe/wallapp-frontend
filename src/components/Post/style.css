@@ -61,3 +61,8 @@
   border: none;
   padding: 0.5em;
 }
+
+/* post body */
+.post-body {
+  overflow-wrap: anywhere;
+}

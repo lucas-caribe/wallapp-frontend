@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import PostContext from '../../context/PostContext';
 
 import Post from '../Post';
+import Loading from '../Loading';
 
 import './style.css';
 
@@ -11,7 +12,7 @@ function PostList() {
 
   return (
     <div className="post-list">
-      {isFetching && <p>Loading...</p>}
+      {isFetching && <Loading />}
       {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}

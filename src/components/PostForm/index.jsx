@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BiSend } from 'react-icons/bi';
 
 import PostContext from '../../context/PostContext';
@@ -14,9 +14,6 @@ const MAX_CHARS = 250;
 function PostForm() {
   const [isValidPost, setIsValidPost] = useState(false);
   const [postBody, setPostBody] = useState('');
-  const [textareaHeight, setTextareaHeight] = useState(0);
-  const [textContainerHeight, setTextContainerHeight] = useState(0);
-  const textAreaRef = useRef(null);
 
   const {
     refreshPosts,
@@ -34,16 +31,12 @@ function PostForm() {
     }
   }, [isEditing]);
 
-  useEffect(() => {
-    setTextContainerHeight(`${textAreaRef.current.scrollHeight}px`);
-    setTextareaHeight(`${textAreaRef.current.scrollHeight}px`);
-  }, [postBody]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isValidPost) {
       setIsFetching(true);
+
       if (isEditing) {
         await submitEdit({ ...postToEdit, body: postBody });
       } else {
@@ -61,26 +54,18 @@ function PostForm() {
     const { value } = target;
     setPostBody(value);
     setIsValidPost(value.length);
-
-    setTextareaHeight(0);
-    setTextContainerHeight(`${textAreaRef.current.scrollHeight}px`);
   };
 
   return (
     <form className="post-form" onSubmit={handleSubmit}>
       {isFetching && <Loading />}
-      <div
-        className="textarea-container"
-        style={{ minHeight: textContainerHeight }}
-      >
+      <div className="textarea-container">
         <textarea
-          ref={textAreaRef}
           placeholder="What are you thinking?"
           maxLength="250"
-          rows="1"
+          rows="4"
           value={postBody}
           onChange={handleChange}
-          style={{ height: textareaHeight }}
         />
       </div>
       <hr />
