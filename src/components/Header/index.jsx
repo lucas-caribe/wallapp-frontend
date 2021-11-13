@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { FiLogOut } from 'react-icons/fi';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import UserContext from '../../context/UserContext';
@@ -34,9 +36,13 @@ function Header() {
 
   const renderUserNav = () => (
     <nav className={isNavVisible ? 'visible' : ''}>
-      <span>{username}</span>
-      <button type="button" onClick={handleLogOut}>
-        Log Out
+      <div className="user-section">
+        <FaUser />
+        <span>{username}</span>
+      </div>
+      <button className="logout-button" type="button" onClick={handleLogOut}>
+        <FiLogOut className="logout-icon" />
+        <span>Logout</span>
       </button>
     </nav>
   );
@@ -48,7 +54,6 @@ function Header() {
           className="toggle-menu"
           onClick={() => setIsNavVisible(!isNavVisible)}
         />
-
         <Link to="/" className="logo-section" onClick={hideNav}>
           <img src={logo} alt="Wall App" />
           <span>WallApp</span>

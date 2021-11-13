@@ -1,7 +1,7 @@
 :root {
   --main-font-color: #2e2e2e;
   --main-blue: #0D7CC5;
-  --header-color: white;
+  --secondary-color: white;
 }
 
 *,
@@ -10,15 +10,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
   font-family: Averia Serif Libre, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  color: var(--main-font-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--main-font-color);
   min-height: 100vh;
   background: var(--main-blue);
 }

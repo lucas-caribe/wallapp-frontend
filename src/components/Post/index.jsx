@@ -7,6 +7,8 @@ import PostContext from '../../context/PostContext';
 import getTimeSince from '../../utils/getTimeSince';
 import { deletePost } from '../../helpers/wallApiHelpers';
 
+import './style.css';
+
 function Post({ post }) {
   const [loggedOwner, setLoggedOwner] = useState(false);
   const { username, isLoggedIn } = useContext(UserContext);

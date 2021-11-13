@@ -1,0 +1,5 @@
+.post {
+  padding: 1em;
+  background: var(--secondary-color);
+  border-radius: 0.5em;
+}
