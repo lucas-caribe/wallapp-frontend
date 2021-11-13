@@ -23,6 +23,15 @@ body {
   background: var(--main-color);
 }
 
+body::-webkit-scrollbar {
+  background: white;
+  width: 0.4em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #cecece;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

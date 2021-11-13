@@ -84,3 +84,60 @@ nav > a {
 .logout-icon {
   font-size: 1.2em;
 }
+
+@media screen and (min-width: 1025px) {
+  header .container {
+    justify-content: space-between;
+    width: 85%;
+  }
+
+  .logo-section img {
+    display: initial;
+  }
+
+  .toggle-menu {
+    display: none;
+  }
+
+  nav {
+    flex-direction: row;
+    position: initial;
+    visibility: visible;
+    box-shadow: none;
+    padding: 0;
+    width: initial;
+  }
+
+  .user-section {
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .logout-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .logout-button span {
+    display: none;
+  }
+
+  nav > a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: var(--main-color);
+    transform: scale(0, 1);
+    transition: transform 0.1s;
+    visibility: hidden;
+  }
+
+  nav > a:hover::after {
+    visibility: visible;
+    transform: scale(1, 1);
+  }
+}

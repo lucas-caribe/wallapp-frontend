@@ -26,10 +26,10 @@ function Header() {
   const renderGuestNav = () => (
     <nav className={isNavVisible ? 'visible' : ''}>
       <Link to="/login" onClick={hideNav}>
-        LOG IN
+        Log In
       </Link>
       <Link to="/register" onClick={hideNav}>
-        SIGN UP
+        Sign Up
       </Link>
     </nav>
   );
