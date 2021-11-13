@@ -3,3 +3,9 @@
   flex-direction: column;
   gap: 1em;
 }
+
+@media screen and (min-width: 1025px) {
+  .post-list {
+    width: 65%;
+  }
+}
