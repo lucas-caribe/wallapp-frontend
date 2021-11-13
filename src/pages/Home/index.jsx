@@ -8,10 +8,10 @@ function Home() {
   const { isLoggedIn } = useContext(UserContext);
 
   return (
-    <div className="main-content">
+    <>
       {isLoggedIn && <PostForm />}
       <PostList />
-    </div>
+    </>
   );
 }
 

@@ -1,3 +1,9 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -8,5 +14,9 @@
 }
 
 .main-content {
+  display: grid;
+  place-items: center;
   padding: 1em;
+  height: 100%;
+  flex-grow: 1;
 }

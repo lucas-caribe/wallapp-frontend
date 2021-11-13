@@ -6,6 +6,9 @@ import UserContext from '../../context/UserContext';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Loading from '../../components/Loading';
+
+import './style.css';
 
 function LogIn() {
   const { logIn, isFetching } = useContext(UserContext);
@@ -28,23 +31,26 @@ function LogIn() {
 
   return (
     <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-      {isFetching && <p>Loading...</p>}
-      <Input
-        placeholder="username"
-        type="text"
-        registerCallback={() =>
-          register('username', { required: 'You must specify a username' })
-        }
-        error={errors.username}
-      />
-      <Input
-        placeholder="password"
-        type="password"
-        registerCallback={() =>
-          register('password', { required: 'You must specify a password' })
-        }
-        error={errors.password}
-      />
+      {isFetching && <Loading />}
+      <h2>Log In</h2>
+      <div className="login-inputs">
+        <Input
+          placeholder="username"
+          type="text"
+          registerCallback={() =>
+            register('username', { required: 'You must specify a username' })
+          }
+          error={errors.username}
+        />
+        <Input
+          placeholder="password"
+          type="password"
+          registerCallback={() =>
+            register('password', { required: 'You must specify a password' })
+          }
+          error={errors.password}
+        />
+      </div>
       <Button>Log In</Button>
     </form>
   );

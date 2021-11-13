@@ -3,6 +3,8 @@ import { BiSend } from 'react-icons/bi';
 
 import PostContext from '../../context/PostContext';
 
+import Loading from '../Loading';
+
 import { createPost } from '../../helpers/wallApiHelpers';
 
 import './style.css';
@@ -66,6 +68,7 @@ function PostForm() {
 
   return (
     <form className="post-form" onSubmit={handleSubmit}>
+      {isFetching && <Loading />}
       <div
         className="textarea-container"
         style={{ minHeight: textContainerHeight }}
@@ -87,7 +90,6 @@ function PostForm() {
           <BiSend />
         </button>
       </div>
-      {isFetching && <p>Loading...</p>}
     </form>
   );
 }

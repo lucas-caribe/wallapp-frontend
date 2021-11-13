@@ -1,6 +1,6 @@
 :root {
   --main-font-color: #2e2e2e;
-  --main-blue: #0D7CC5;
+  --main-color: #0D7CC5;
   --secondary-color: white;
 }
 
@@ -20,7 +20,7 @@
 body {
   color: var(--main-font-color);
   min-height: 100vh;
-  background: var(--main-blue);
+  background: var(--main-color);
 }
 
 code {
