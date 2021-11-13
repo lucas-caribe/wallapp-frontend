@@ -19,3 +19,10 @@
 .login-form > button {
   margin-top: 1em;
 }
+
+@media screen and (min-width: 1025px) {
+  .login-form {
+    padding: 1.5em 2.5em;
+    gap: 1.5em;
+  }
+}
