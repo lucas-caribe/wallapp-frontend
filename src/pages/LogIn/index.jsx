@@ -8,7 +8,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 function LogIn() {
-  const { logIn } = useContext(UserContext);
+  const { logIn, isFetching } = useContext(UserContext);
   const navigate = useNavigate();
   const {
     register,
@@ -28,6 +28,7 @@ function LogIn() {
 
   return (
     <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+      {isFetching && <p>Loading...</p>}
       <Input
         placeholder="username"
         type="text"

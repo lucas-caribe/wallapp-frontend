@@ -10,7 +10,6 @@ function PostList() {
   return (
     <div>
       {isFetching && <p>Loading...</p>}
-      <h1>PostList</h1>
       {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}

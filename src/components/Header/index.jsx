@@ -1,25 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 import UserContext from '../../context/UserContext';
 
+import logo from '../../assets/logo.svg';
+
+import './style.css';
+
 function Header() {
+  const [isNavVisible, setIsNavVisible] = useState(false);
   const { logOut, username } = useContext(UserContext);
+
+  const hideNav = () => {
+    setIsNavVisible(false);
+  };
 
   const handleLogOut = async () => {
     await logOut();
+    hideNav();
   };
 
   const renderGuestNav = () => (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Sign Up</Link>
+    <nav className={isNavVisible ? 'visible' : ''}>
+      <Link to="/login" onClick={hideNav}>
+        LOGIN
+      </Link>
+      <Link to="/register" onClick={hideNav}>
+        SIGN UP
+      </Link>
     </nav>
   );
 
   const renderUserNav = () => (
-    <nav>
+    <nav className={isNavVisible ? 'visible' : ''}>
       <span>{username}</span>
       <button type="button" onClick={handleLogOut}>
         Log Out
@@ -29,8 +43,18 @@ function Header() {
 
   return (
     <header>
-      <h1>WallApp</h1>
-      {username ? renderUserNav() : renderGuestNav()}
+      <div className="container">
+        <GiHamburgerMenu
+          className="toggle-menu"
+          onClick={() => setIsNavVisible(!isNavVisible)}
+        />
+
+        <Link to="/" className="logo-section" onClick={hideNav}>
+          <img src={logo} alt="Wall App" />
+          <span>WallApp</span>
+        </Link>
+        {username ? renderUserNav() : renderGuestNav()}
+      </div>
     </header>
   );
 }
