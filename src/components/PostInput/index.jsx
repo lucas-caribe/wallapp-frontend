@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import PostContext from '../../context/PostContext';
 
@@ -10,14 +10,33 @@ function PostInput() {
   const [isValidPost, setIsValidPost] = useState(false);
   const [postBody, setPostBody] = useState('');
 
-  const { refreshPosts, isFetching, setIsFetching } = useContext(PostContext);
+  const {
+    refreshPosts,
+    isFetching,
+    setIsFetching,
+    isEditing,
+    postToEdit,
+    submitEdit,
+  } = useContext(PostContext);
+
+  useEffect(() => {
+    if (isEditing) {
+      console.log(postToEdit);
+      setPostBody(postToEdit.body);
+    }
+  }, [isEditing]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isValidPost) {
       setIsFetching(true);
-      await createPost({ body: postBody });
+      if (isEditing) {
+        await submitEdit({ ...postToEdit, body: postBody });
+      } else {
+        await createPost({ body: postBody });
+      }
+
       setPostBody('');
       setIsValidPost(false);
       await refreshPosts();

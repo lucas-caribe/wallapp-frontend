@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import PostContext from './PostContext';
 
-import { getPosts } from '../helpers/wallApiHelpers';
+import { getPosts, editPost } from '../helpers/wallApiHelpers';
 
 const PostProvider = ({ children }) => {
   const [postList, setPostList] = useState([]);
@@ -33,6 +33,12 @@ const PostProvider = ({ children }) => {
     setPostToEdit(postData);
   };
 
+  const submitEdit = async (postData) => {
+    await editPost(postData);
+    setIsEditing(false);
+    setPostToEdit({});
+  };
+
   return (
     <PostContext.Provider
       value={{
@@ -42,9 +48,8 @@ const PostProvider = ({ children }) => {
         postToEdit,
         refreshPosts,
         setIsFetching,
-        setIsEditing,
-        setPostToEdit,
         setEdit,
+        submitEdit,
       }}
     >
       {children}

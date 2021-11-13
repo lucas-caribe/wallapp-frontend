@@ -9,8 +9,8 @@ import { deletePost } from '../../helpers/wallApiHelpers';
 
 function Post({ post }) {
   const [loggedOwner, setLoggedOwner] = useState(false);
-  const { username, isLoggedIn, setEdit } = useContext(UserContext);
-  const { refreshPosts } = useContext(PostContext);
+  const { username, isLoggedIn } = useContext(UserContext);
+  const { refreshPosts, setEdit } = useContext(PostContext);
   const { id, owner, body, created_at: createdAt } = post;
 
   const timeSince = getTimeSince(new Date(createdAt));
@@ -42,7 +42,7 @@ function Post({ post }) {
       </div>
       {loggedOwner && (
         <div className="edit-section">
-          <button type="button" onClick={() => setEdit(id, post)}>
+          <button type="button" onClick={() => setEdit(post)}>
             edit
           </button>
           <button type="button" onClick={handleDelete}>

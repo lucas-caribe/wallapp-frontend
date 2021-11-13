@@ -23,9 +23,9 @@ export const createPost = async (postData) => {
   }
 };
 
-export const editPost = async (id, postData) => {
+export const editPost = async (postData) => {
   try {
-    await wallApi.put(`posts/${id}`, postData, generateHeaders());
+    await wallApi.put(`posts/${postData.id}/`, postData, generateHeaders());
   } catch (error) {
     console.log(error);
   }
