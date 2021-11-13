@@ -1,14 +1,8 @@
 import wallApi from '../services/wallApi';
 
-const generateHeaders = () => {
-  const csrfToken = document.cookie.match(/(?<=csrftoken=).*(?<!;)/g)[0];
-  const sessionToken = sessionStorage.token;
-
-  return {
-    Authorization: `Token ${sessionToken}`,
-    'X-CSRFToken': csrfToken,
-  };
-};
+const generateHeaders = () => ({
+  Authorization: `Token ${sessionStorage.token}`,
+});
 
 export const getPosts = async () => {
   try {
@@ -24,6 +18,22 @@ export const getPosts = async () => {
 export const createPost = async (postData) => {
   try {
     await wallApi.post('posts/', postData, generateHeaders());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const editPost = async (id, postData) => {
+  try {
+    await wallApi.put(`posts/${id}`, postData, generateHeaders());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deletePost = async (id) => {
+  try {
+    await wallApi.delete(`posts/${id}`, generateHeaders());
   } catch (error) {
     console.log(error);
   }
@@ -45,7 +55,7 @@ export const userLogin = async (userCredentials) => {
 };
 
 export const userLogout = () => {
-  wallApi.post('/users/logout/');
+  wallApi.post('users/logout/');
   sessionStorage.removeItem('username');
   sessionStorage.removeItem('token');
 };

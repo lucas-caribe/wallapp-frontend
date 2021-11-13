@@ -7,10 +7,15 @@ import { getPosts } from '../helpers/wallApiHelpers';
 
 const PostProvider = ({ children }) => {
   const [postList, setPostList] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [postToEdit, setPostToEdit] = useState({});
 
   const fetchPosts = async () => {
+    setIsFetching(true);
     const data = await getPosts();
     setPostList(data);
+    setIsFetching(false);
   };
 
   useEffect(() => {
@@ -18,11 +23,30 @@ const PostProvider = ({ children }) => {
   }, []);
 
   const refreshPosts = () => {
+    setIsFetching(true);
     fetchPosts();
+    setIsFetching(false);
+  };
+
+  const setEdit = (postData) => {
+    setIsEditing(true);
+    setPostToEdit(postData);
   };
 
   return (
-    <PostContext.Provider value={{ postList, refreshPosts }}>
+    <PostContext.Provider
+      value={{
+        postList,
+        isFetching,
+        isEditing,
+        postToEdit,
+        refreshPosts,
+        setIsFetching,
+        setIsEditing,
+        setPostToEdit,
+        setEdit,
+      }}
+    >
       {children}
     </PostContext.Provider>
   );

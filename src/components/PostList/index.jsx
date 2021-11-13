@@ -5,10 +5,11 @@ import PostContext from '../../context/PostContext';
 import Post from '../Post';
 
 function PostList() {
-  const { postList } = useContext(PostContext);
+  const { postList, isFetching } = useContext(PostContext);
 
   return (
     <div>
+      {isFetching && <p>Loading...</p>}
       <h1>PostList</h1>
       {postList.map((post) => (
         <Post key={post.id} post={post} />
