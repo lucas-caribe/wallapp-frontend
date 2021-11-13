@@ -6,8 +6,8 @@ import UserContext from '../../context/UserContext';
 function Header() {
   const { logOut, username } = useContext(UserContext);
 
-  const handleLogOut = () => {
-    logOut();
+  const handleLogOut = async () => {
+    await logOut();
   };
 
   const renderGuestNav = () => (

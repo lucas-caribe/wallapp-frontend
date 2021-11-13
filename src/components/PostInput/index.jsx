@@ -21,7 +21,6 @@ function PostInput() {
 
   useEffect(() => {
     if (isEditing) {
-      console.log(postToEdit);
       setPostBody(postToEdit.body);
     }
   }, [isEditing]);

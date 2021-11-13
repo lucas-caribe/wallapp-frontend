@@ -18,6 +18,8 @@ function Post({ post }) {
   useEffect(() => {
     if (isLoggedIn && username === owner) {
       setLoggedOwner(true);
+    } else {
+      setLoggedOwner(false);
     }
   }, [username, isLoggedIn]);
 
