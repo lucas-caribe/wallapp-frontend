@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { FaUser, FaKey } from 'react-icons/fa';
 
 import UserContext from '../../context/UserContext';
 
@@ -45,6 +46,7 @@ function LogIn() {
             register('username', { required: 'You must specify a username' })
           }
           error={errors.username}
+          icon={FaUser}
         />
         <Input
           placeholder="password"
@@ -53,6 +55,7 @@ function LogIn() {
             register('password', { required: 'You must specify a password' })
           }
           error={errors.password}
+          icon={FaKey}
         />
       </div>
       <Button>Log In</Button>

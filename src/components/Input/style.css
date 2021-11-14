@@ -1,6 +1,20 @@
 .input-container {
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+  background: #efefef;
   position: relative;
   border-radius: 0.5em;
+}
+
+.input-container:focus-within:not([data-error='true']) {
+  outline: 1px solid var(--main-color);
+}
+
+.input-container > svg:first-child {
+  color: var(--main-font-color);
+  filter: opacity(0.5);
+  font-size: 0.9em;
 }
 
 .form-input {
@@ -11,12 +25,12 @@
   background: #efefef;
 }
 
-.form-input[data-error='false']:focus-visible {
-  outline: 1px solid var(--main-color);
+.form-input:focus-visible {
+  outline: none;
 }
 
 /* error */
-.form-input[data-error='true'] {
+.error-outline {
   outline: 1px solid red;
 }
 

@@ -1,6 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { FaUser, FaKey } from 'react-icons/fa';
+// import { MdEmail } from 'react-icons/md';
+import { GrMail } from 'react-icons/gr';
 
 import UserContext from '../../context/UserContext';
 
@@ -46,6 +49,7 @@ function Register() {
             register('username', { required: 'You must specify a username' })
           }
           error={errors.username}
+          icon={FaUser}
         />
 
         <Input
@@ -55,6 +59,7 @@ function Register() {
             register('email', { required: 'You must specify an email' })
           }
           error={errors.email}
+          icon={GrMail}
         />
 
         <Input
@@ -64,6 +69,7 @@ function Register() {
             register('password1', { required: 'You must specify a password' })
           }
           error={errors.password1}
+          icon={FaKey}
         />
 
         <Input
@@ -76,6 +82,7 @@ function Register() {
             })
           }
           error={errors.password2}
+          icon={FaKey}
         />
       </div>
       <Button>Sign Up</Button>
