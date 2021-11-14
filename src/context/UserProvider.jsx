@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import UserContext from './UserContext';
 
-import { userLogout, userLogin } from '../helpers/wallApiHelpers';
+import { userLogout, userLogin, userRegister } from '../helpers/wallApiHelpers';
 
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
@@ -17,7 +18,9 @@ const UserProvider = ({ children }) => {
   }, []);
 
   const logIn = async (userCredentials) => {
+    setIsFetching(true);
     const status = await userLogin(userCredentials);
+    setIsFetching(false);
 
     if (status) {
       setUsername(userCredentials.username);
@@ -35,8 +38,25 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
+  const register = async (userData) => {
+    setIsFetching(true);
+    const status = await userRegister(userData);
+    setIsFetching(false);
+
+    if (status) {
+      setUsername(userData.username);
+      setIsLoggedIn(true);
+
+      return true;
+    }
+
+    return false;
+  };
+
   return (
-    <UserContext.Provider value={{ isLoggedIn, username, logIn, logOut }}>
+    <UserContext.Provider
+      value={{ isLoggedIn, username, isFetching, logIn, logOut, register }}
+    >
       {children}
     </UserContext.Provider>
   );

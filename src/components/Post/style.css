@@ -1,0 +1,85 @@
+.post {
+  position: relative;
+  padding: 1em;
+  background: var(--secondary-color);
+  border-radius: 0.5em;
+}
+
+/* post header */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.user-image {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  background: gray;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.post-username {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.posted-time {
+  filter: opacity(0.8);
+  font-size: 0.8em;
+}
+
+/* toggle edit */
+.toggle-edit-section {
+  position: absolute;
+  font-size: 1.2em;
+  right: 1em;
+  top: 1em;
+  cursor: pointer;
+}
+
+.edit-section {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 1.5em;
+  top: 2.5em;
+  visibility: hidden;
+  border-radius: 0.2em;
+  overflow: hidden;
+}
+
+.edit-section > button {
+  background: none;
+  background: var(--main-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+/* post body */
+.post-body {
+  overflow-wrap: anywhere;
+}
+
+@media screen and (min-width: 1025px) {
+  .post {
+    padding: 1.5em;
+  }
+
+  .post-header {
+    margin-bottom: 1.5em;
+  }
+
+  .edit-section > button:hover {
+    filter: brightness(1.1)
+  }
+}

@@ -1,3 +1,143 @@
 header {
+  position: relative;
+  background: var(--secondary-color);
+}
+
+header .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8em 0;
+}
+
+/* logo section */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  text-decoration: none;
+  color: var(--main-font-color);
+}
+
+.logo-section img {
+  width: 1.3em;
+  display: none;
+}
+
+.logo-section span {
+  font-size: 1.3em;
+}
+
+/* toggle-menu */
+.toggle-menu {
+  position: absolute;
+  left: 0.6em;
+  top: 50%;
+  font-size: 1.5em;
+  color: var(--main-font-color);
+  transform: translateY(-50%);
+}
+
+/* nav */
+nav {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em;
+  gap: 1.5em;
+  background: var(--secondary-color);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+}
+
+nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+nav > a {
+  position: relative;
+  text-decoration: none;
+  color: var(--main-font-color);
+}
+
+.logout-button,
+.user-section {
+  display: grid;
+  grid-template-columns: 0.3fr 3fr;
+  font-size: 1em;
+  color: var(--main-font-color);
+  border: none;
+  background: none;
+  text-align: left;
+}
+
+.logout-icon {
+  font-size: 1.2em;
+}
+
+@media screen and (min-width: 1025px) {
+  header .container {
+    justify-content: space-between;
+    width: 85%;
+  }
+
+  .logo-section img {
+    display: initial;
+  }
+
+  .toggle-menu {
+    display: none;
+  }
+
+  nav {
+    flex-direction: row;
+    position: initial;
+    visibility: visible;
+    box-shadow: none;
+    padding: 0;
+    width: initial;
+  }
+
+  .user-section {
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .logout-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .logout-button span {
+    display: none;
+  }
+
+  nav > a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: var(--main-color);
+    transform: scale(0, 1);
+    transition: transform 0.1s;
+    visibility: hidden;
+  }
+
+  nav > a:hover::after {
+    visibility: visible;
+    transform: scale(1, 1);
+  }
 }

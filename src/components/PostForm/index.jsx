@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { BiSend } from 'react-icons/bi';
 
 import PostContext from '../../context/PostContext';
 
+import Loading from '../Loading';
+
 import { createPost } from '../../helpers/wallApiHelpers';
+
+import './style.css';
 
 const MAX_CHARS = 250;
 
-function PostInput() {
+function PostForm() {
   const [isValidPost, setIsValidPost] = useState(false);
   const [postBody, setPostBody] = useState('');
 
@@ -22,6 +27,7 @@ function PostInput() {
   useEffect(() => {
     if (isEditing) {
       setPostBody(postToEdit.body);
+      setIsValidPost(true);
     }
   }, [isEditing]);
 
@@ -30,6 +36,7 @@ function PostInput() {
 
     if (isValidPost) {
       setIsFetching(true);
+
       if (isEditing) {
         await submitEdit({ ...postToEdit, body: postBody });
       } else {
@@ -50,24 +57,26 @@ function PostInput() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea
-        placeholder="What are you thinking?"
-        cols="30"
-        rows="10"
-        maxLength="250"
-        value={postBody}
-        onChange={handleChange}
-      />
+    <form className="post-form" onSubmit={handleSubmit}>
+      {isFetching && <Loading />}
+      <div className="textarea-container">
+        <textarea
+          placeholder="What are you thinking?"
+          maxLength="250"
+          rows="4"
+          value={postBody}
+          onChange={handleChange}
+        />
+      </div>
+      <hr />
       <div className="form-controls">
         <span>{MAX_CHARS - postBody.length}</span>
         <button disabled={!isValidPost} type="submit">
-          post
+          <BiSend />
         </button>
       </div>
-      {isFetching && <p>Loading...</p>}
     </form>
   );
 }
 
-export default PostInput;
+export default PostForm;

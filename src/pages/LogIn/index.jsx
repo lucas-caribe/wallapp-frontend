@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -6,15 +6,24 @@ import UserContext from '../../context/UserContext';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Loading from '../../components/Loading';
+
+import './style.css';
 
 function LogIn() {
-  const { logIn } = useContext(UserContext);
+  const { logIn, isFetching } = useContext(UserContext);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    if (sessionStorage.token) {
+      navigate('/', { replace: true });
+    }
+  }, []);
 
   const onSubmit = async ({ username, password }) => {
     const status = await logIn({ username, password });
@@ -28,22 +37,26 @@ function LogIn() {
 
   return (
     <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        placeholder="username"
-        type="text"
-        registerCallback={() =>
-          register('username', { required: 'You must specify a username' })
-        }
-        error={errors.username}
-      />
-      <Input
-        placeholder="password"
-        type="password"
-        registerCallback={() =>
-          register('password', { required: 'You must specify a password' })
-        }
-        error={errors.password}
-      />
+      {isFetching && <Loading />}
+      <h2>Log In</h2>
+      <div className="login-inputs">
+        <Input
+          placeholder="username"
+          type="text"
+          registerCallback={() =>
+            register('username', { required: 'You must specify a username' })
+          }
+          error={errors.username}
+        />
+        <Input
+          placeholder="password"
+          type="password"
+          registerCallback={() =>
+            register('password', { required: 'You must specify a password' })
+          }
+          error={errors.password}
+        />
+      </div>
       <Button>Log In</Button>
     </form>
   );

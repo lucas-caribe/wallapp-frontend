@@ -34,9 +34,11 @@ const PostProvider = ({ children }) => {
   };
 
   const submitEdit = async (postData) => {
+    setIsFetching(true);
     await editPost(postData);
     setIsEditing(false);
     setPostToEdit({});
+    setIsFetching(false);
   };
 
   return (

@@ -1,0 +1,28 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20em;
+  gap: 1em;
+  padding: 1.5em;
+  border-radius: 0.5em;
+  background: var(--secondary-color);
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+
+.login-form > button {
+  margin-top: 1em;
+}
+
+@media screen and (min-width: 1025px) {
+  .login-form {
+    padding: 1.5em 2.5em;
+    gap: 1.5em;
+  }
+}

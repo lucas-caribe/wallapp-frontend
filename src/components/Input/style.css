@@ -1,0 +1,35 @@
+.input-container {
+  position: relative;
+  border-radius: 0.5em;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1em;
+  border: none;
+  border-radius: 0.5em;
+  background: #efefef;
+}
+
+.form-input[data-error='false']:focus-visible {
+  outline: 1px solid var(--main-color);
+}
+
+/* error */
+.form-input[data-error='true'] {
+  outline: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.6em;
+  margin: -1em 0 0 1em;
+}
+
+.error-icon {
+  color: red;
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+}

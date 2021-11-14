@@ -4,6 +4,16 @@ const generateHeaders = () => ({
   Authorization: `Token ${sessionStorage.token}`,
 });
 
+const setSessionInfo = (token, username) => {
+  sessionStorage.token = token;
+  sessionStorage.username = username;
+};
+
+const clearSessionInfo = () => {
+  sessionStorage.removeItem('username');
+  sessionStorage.removeItem('token');
+};
+
 export const getPosts = async () => {
   try {
     const response = await wallApi.get('posts');
@@ -44,8 +54,7 @@ export const userLogin = async (userCredentials) => {
     const response = await wallApi.post('users/login/', userCredentials);
     const { key: token } = response.data;
 
-    sessionStorage.token = token;
-    sessionStorage.username = userCredentials.username;
+    setSessionInfo(token, userCredentials.username);
 
     return true;
   } catch (error) {
@@ -56,6 +65,19 @@ export const userLogin = async (userCredentials) => {
 
 export const userLogout = () => {
   wallApi.post('users/logout/');
-  sessionStorage.removeItem('username');
-  sessionStorage.removeItem('token');
+  clearSessionInfo();
+};
+
+export const userRegister = async (userData) => {
+  try {
+    const response = await wallApi.post('users/registration/', userData);
+    const { key: token } = response.data;
+
+    setSessionInfo(token, userData.username);
+
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };

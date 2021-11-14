@@ -3,14 +3,16 @@ import React, { useContext } from 'react';
 import PostContext from '../../context/PostContext';
 
 import Post from '../Post';
+import Loading from '../Loading';
+
+import './style.css';
 
 function PostList() {
   const { postList, isFetching } = useContext(PostContext);
 
   return (
-    <div>
-      {isFetching && <p>Loading...</p>}
-      <h1>PostList</h1>
+    <div className="post-list">
+      {isFetching && <Loading />}
       {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}

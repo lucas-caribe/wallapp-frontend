@@ -1,0 +1,11 @@
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media screen and (min-width: 1025px) {
+  .post-list {
+    gap: 2em;
+  }
+}
