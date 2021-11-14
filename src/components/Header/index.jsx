@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import UserContext from '../../context/UserContext';
 
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/tsl-logo.svg';
 
 import './style.css';
 

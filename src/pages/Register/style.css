@@ -23,23 +23,5 @@
 @media screen and (min-width: 1025px) {
   .register-form {
     padding: 1.5em 2.5em;
-    gap: 1.8em;
-    width: 30em;
-  }
-
-  .register-inputs {
-    display: grid;
-    gap: 1.5em;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .input-error-container {
-    position: relative;
-  }
-
-  .register-inputs .error-message {
-    position: absolute;
-    bottom: -1.7em;
-    left: 0;
   }
 }
