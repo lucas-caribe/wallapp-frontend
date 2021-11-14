@@ -29,11 +29,48 @@ button:hover {
   filter: brightness(1.1);
 }
 
+.login-register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18em;
+  gap: 1.5em;
+  padding: 1.5em;
+  border-radius: 0.5em;
+  background: var(--secondary-color);
+}
+
+.login-register-form > button {
+  margin-top: 1em;
+}
+
+.login-register-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .main-content {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .login-register-form {
+    width: 20em;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   .main-content {
     width: 50%;
     margin: 0 auto;
     padding: 2em 0;
     gap: 2em;
+  }
+
+  .login-register-form {
+    padding: 1.5em 2.5em;
   }
 }

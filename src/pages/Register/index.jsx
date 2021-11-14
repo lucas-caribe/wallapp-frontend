@@ -8,8 +8,6 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Loading from '../../components/Loading';
 
-import './style.css';
-
 function Register() {
   const {
     register,
@@ -37,10 +35,10 @@ function Register() {
   };
 
   return (
-    <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="login-register-form" onSubmit={handleSubmit(onSubmit)}>
       {isFetching && <Loading />}
       <h2>Sign Up</h2>
-      <div className="register-inputs">
+      <div className="login-register-inputs">
         <Input
           type="text"
           placeholder="username"

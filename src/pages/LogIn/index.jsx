@@ -8,8 +8,6 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
 
-import './style.css';
-
 function LogIn() {
   const { logIn, isFetching } = useContext(UserContext);
   const navigate = useNavigate();
@@ -36,10 +34,10 @@ function LogIn() {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="login-register-form" onSubmit={handleSubmit(onSubmit)}>
       {isFetching && <Loading />}
       <h2>Log In</h2>
-      <div className="login-inputs">
+      <div className="login-register-inputs">
         <Input
           placeholder="username"
           type="text"
