@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { BsThreeDots } from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import { BsThreeDots } from 'react-icons/bs';
+import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
 
 import UserContext from '../../context/UserContext';
 import PostContext from '../../context/PostContext';
@@ -47,11 +48,13 @@ function Post({ post }) {
         onClick={() => setIsEditSectionVisible(!isEditSectionVisible)}
       />
       <div className={`edit-section ${isEditSectionVisible ? 'visible' : ''}`}>
-        <button type="button" onClick={handleEdit}>
+        <button className="edit-button" type="button" onClick={handleEdit}>
+          <AiTwotoneEdit />
           edit
         </button>
         <hr />
-        <button type="button" onClick={handleDelete}>
+        <button className="delete-button" type="button" onClick={handleDelete}>
+          <AiFillDelete />
           delete
         </button>
       </div>

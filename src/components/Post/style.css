@@ -54,12 +54,17 @@
   visibility: hidden;
   border-radius: 0.2em;
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .edit-section > button {
-  background: none;
-  background: var(--main-color);
-  color: var(--secondary-color);
+  display: grid;
+  grid-template-columns: 0.5fr 3fr;
+  gap: 0.5em;
+  align-items: center;
+  text-align: left;
+  background: var(--secondary-color);
+  color: var(--main-font-color);
   border: none;
   padding: 0.5em;
   cursor: pointer;
