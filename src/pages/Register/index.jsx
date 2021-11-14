@@ -8,6 +8,8 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Loading from '../../components/Loading';
 
+import './style.css';
+
 function Register() {
   const {
     register,
@@ -30,15 +32,15 @@ function Register() {
     if (status) {
       navigate('/', { replace: true });
     } else {
-      global.alert('Something went wrong!');
+      global.alert('Username or email already exists!');
     }
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
       {isFetching && <Loading />}
       <h2>Sign Up</h2>
-      <div className="login-inputs">
+      <div className="register-inputs">
         <Input
           type="text"
           placeholder="username"

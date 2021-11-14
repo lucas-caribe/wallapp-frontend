@@ -42,6 +42,7 @@
   font-size: 1.2em;
   right: 1em;
   top: 1em;
+  cursor: pointer;
 }
 
 .edit-section {
@@ -51,15 +52,17 @@
   right: 1.5em;
   top: 2.5em;
   visibility: hidden;
-  background: var(--main-color);
   border-radius: 0.2em;
+  overflow: hidden;
 }
 
 .edit-section > button {
   background: none;
+  background: var(--main-color);
   color: var(--secondary-color);
   border: none;
   padding: 0.5em;
+  cursor: pointer;
 }
 
 /* post body */
@@ -74,5 +77,9 @@
 
   .post-header {
     margin-bottom: 1.5em;
+  }
+
+  .edit-section > button:hover {
+    filter: brightness(1.1)
   }
 }

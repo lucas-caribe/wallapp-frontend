@@ -37,6 +37,7 @@
   font-size: 1.5em;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .form-controls > button:disabled {
