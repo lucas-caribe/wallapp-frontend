@@ -14,10 +14,9 @@
 }
 
 .main-content {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
-  height: 100%;
   flex-grow: 1;
 }
 
@@ -32,6 +31,7 @@ button:hover {
 .login-register-form {
   display: flex;
   flex-direction: column;
+  margin: auto;
   align-items: center;
   width: 18em;
   gap: 1.5em;
