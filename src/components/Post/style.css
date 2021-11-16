@@ -45,6 +45,10 @@
   cursor: pointer;
 }
 
+.toggle-edit-section:focus {
+  outline: none;
+}
+
 .edit-section {
   position: absolute;
   display: flex;

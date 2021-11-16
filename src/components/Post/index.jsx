@@ -39,13 +39,16 @@ function Post({ post }) {
   const handleEdit = () => {
     setIsEditSectionVisible(false);
     setEdit(post);
+    window.scrollTo(0, 0);
   };
 
   const renderEditSection = () => (
     <>
       <BsThreeDots
+        tabIndex={0}
+        onFocus={() => setIsEditSectionVisible(true)}
+        onBlur={() => setTimeout(() => setIsEditSectionVisible(false), 200)}
         className="toggle-edit-section"
-        onClick={() => setIsEditSectionVisible(!isEditSectionVisible)}
       />
       <div className={`edit-section ${isEditSectionVisible ? 'visible' : ''}`}>
         <button className="edit-button" type="button" onClick={handleEdit}>

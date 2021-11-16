@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaUser, FaKey } from 'react-icons/fa';
-// import { MdEmail } from 'react-icons/md';
 import { GrMail } from 'react-icons/gr';
 
 import UserContext from '../../context/UserContext';
@@ -66,7 +65,12 @@ function Register() {
           type="password"
           placeholder="password"
           registerCallback={() =>
-            register('password1', { required: 'You must specify a password' })
+            register('password1', {
+              required: 'You must specify a password',
+              validate: (value) =>
+                /^(?=.*[a-z])(?=.*\d)[a-zA-Z\d\w\W]{8,}$/.test(value) ||
+                'Password not strong enough',
+            })
           }
           error={errors.password1}
           icon={FaKey}
