@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# WallApp - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple application built with `reactjs` and `axios`.
 
-## Available Scripts
+This application allows users to register, login and post messages on a wall.
 
-In the project directory, you can run:
+The back-end application can be found [here](https://github.com/lucas-caribe/wallapp-backend).
 
-### `npm start`
+## Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- nodejs
+- npm
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+Start by cloning this repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone git@github.com:lucas-caribe/wallapp-frontend.git
+cd wallapp-frontend
+```
 
-### `npm run build`
+After cloning the repository, make sure nodejs is installed on your computer.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+node -v
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install the project dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you want to try all the application features, you must first install and run the [server](https://github.com/lucas-caribe/wallapp-backend).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After you get the server running, you can start the application with the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+<p>Wall (guest)</p>
+<div>
+  <img src="https://user-images.githubusercontent.com/10157033/141980668-252e15c1-5a43-48fb-9dde-b1ec719a8ac9.png" alt="wall_guest" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141985549-faffe04e-5268-45da-a1d7-209766109ee0.png" alt="wall_guest_mobile" width="20%" align="center"/>
+</div>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p>Wall (authed)</p>
+<div>
+  <img src="https://user-images.githubusercontent.com/10157033/141981316-de7a18cb-814e-48b3-b829-8f689c09f397.png" alt="wall_authed" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141986297-379ebe34-0127-421c-9873-66719c0e1342.png" alt="wall_authed_mobile" width="20%" align="center" />
+</div>
 
-### Code Splitting
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p>Login screen</p>
+<div>
+  <img src="https://user-images.githubusercontent.com/10157033/141981542-19735b96-a550-462d-bf74-78bf5055d9f5.png" alt="login_screen" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141986763-2ed7b94a-7308-4396-a03e-709549a60cf2.png" alt="login_screen_mobile" width="20%" align="center" />
+</div>
 
-### Analyzing the Bundle Size
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p>Sign Up screen</p>
+<div>
+  <img src="https://user-images.githubusercontent.com/10157033/141981687-2d5fde94-4a03-48c0-ae67-1628109b5091.png" alt="signup_screen" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141986950-25a62e59-b68e-4a4f-99b0-3bcf4ef785e2.png" alt="signup_screen_mobile" width="20%" align="center" />
+</div>
