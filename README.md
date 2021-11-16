@@ -46,30 +46,30 @@ npm start
 
 <p>Wall (guest)</p>
 <div>
-  <img src="https://user-images.githubusercontent.com/10157033/141980668-252e15c1-5a43-48fb-9dde-b1ec719a8ac9.png" alt="wall_guest" width="75.5%" align="center" />
-  <img src="https://user-images.githubusercontent.com/10157033/141985549-faffe04e-5268-45da-a1d7-209766109ee0.png" alt="wall_guest_mobile" width="20%" align="center"/>
+  <img src="https://user-images.githubusercontent.com/10157033/141989199-9cc1705b-368c-41d1-be54-b26efa2497d4.png" alt="wall_guest" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989241-d83812b9-f47c-47f8-8f99-6e0f4c1dc6c3.png" alt="wall_guest_mobile" width="20%" align="center"/>
 </div>
 
 <br/>
 
 <p>Wall (authed)</p>
 <div>
-  <img src="https://user-images.githubusercontent.com/10157033/141981316-de7a18cb-814e-48b3-b829-8f689c09f397.png" alt="wall_authed" width="75.5%" align="center" />
-  <img src="https://user-images.githubusercontent.com/10157033/141986297-379ebe34-0127-421c-9873-66719c0e1342.png" alt="wall_authed_mobile" width="20%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989318-7c9bd88e-4cbf-4950-a04e-fa0d741dd144.png" alt="wall_authed" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989356-426223f9-b5f1-49b0-9e22-11cfab6fb6cd.png" alt="wall_authed_mobile" width="20%" align="center" />
 </div>
 
 <br/>
 
 <p>Login screen</p>
 <div>
-  <img src="https://user-images.githubusercontent.com/10157033/141981542-19735b96-a550-462d-bf74-78bf5055d9f5.png" alt="login_screen" width="75.5%" align="center" />
-  <img src="https://user-images.githubusercontent.com/10157033/141986763-2ed7b94a-7308-4396-a03e-709549a60cf2.png" alt="login_screen_mobile" width="20%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989392-14c8a8a1-36b0-4bec-b141-11a2762c36fb.png" alt="login_screen" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989404-d769b69a-ee3a-4b3d-ad9b-5e3e95d0bb18.png" alt="login_screen_mobile" width="20%" align="center" />
 </div>
 
 <br/>
 
 <p>Sign Up screen</p>
 <div>
-  <img src="https://user-images.githubusercontent.com/10157033/141981687-2d5fde94-4a03-48c0-ae67-1628109b5091.png" alt="signup_screen" width="75.5%" align="center" />
-  <img src="https://user-images.githubusercontent.com/10157033/141986950-25a62e59-b68e-4a4f-99b0-3bcf4ef785e2.png" alt="signup_screen_mobile" width="20%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989949-97579f20-148e-4b6f-b98c-0a227f960fe5.png" alt="signup_screen" width="75.5%" align="center" />
+  <img src="https://user-images.githubusercontent.com/10157033/141989471-bf861c24-0979-4f73-9b30-f9f8a72f04fe.png" alt="signup_screen_mobile" width="20%" align="center" />
 </div>
