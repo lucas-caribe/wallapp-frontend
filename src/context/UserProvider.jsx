@@ -19,17 +19,17 @@ const UserProvider = ({ children }) => {
 
   const logIn = async (userCredentials) => {
     setIsFetching(true);
-    const status = await userLogin(userCredentials);
+    const { status, message } = await userLogin(userCredentials);
     setIsFetching(false);
 
-    if (status) {
+    if (status === 200) {
       setUsername(userCredentials.username);
       setIsLoggedIn(true);
 
-      return true;
+      return '';
     }
 
-    return false;
+    return message;
   };
 
   const logOut = () => {
@@ -40,17 +40,17 @@ const UserProvider = ({ children }) => {
 
   const register = async (userData) => {
     setIsFetching(true);
-    const status = await userRegister(userData);
+    const { status, message } = await userRegister(userData);
     setIsFetching(false);
 
-    if (status) {
+    if (status === 201) {
       setUsername(userData.username);
       setIsLoggedIn(true);
 
-      return true;
+      return '';
     }
 
-    return false;
+    return message;
   };
 
   return (

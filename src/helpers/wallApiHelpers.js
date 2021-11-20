@@ -14,6 +14,17 @@ const clearSessionInfo = () => {
   sessionStorage.removeItem('token');
 };
 
+const getError = (errorData) => {
+  if (errorData.non_field_errors) {
+    return errorData.non_field_errors;
+  }
+  if (errorData.detail) {
+    return errorData.detail;
+  }
+
+  return Object.values(errorData)[0][0];
+};
+
 export const getPosts = async () => {
   try {
     const response = await wallApi.get('posts');
@@ -56,10 +67,11 @@ export const userLogin = async (userCredentials) => {
 
     setSessionInfo(token, userCredentials.username);
 
-    return true;
+    return { status: response.status };
   } catch (error) {
-    console.log(error);
-    return false;
+    const { data, status } = await error.response;
+    const errorMessage = getError(data);
+    return { status, message: errorMessage };
   }
 };
 
@@ -70,14 +82,15 @@ export const userLogout = () => {
 
 export const userRegister = async (userData) => {
   try {
-    const response = await wallApi.post('users/registration/', userData);
+    const response = await wallApi.post('users/registration/', userData, {});
     const { key: token } = response.data;
 
     setSessionInfo(token, userData.username);
 
-    return true;
+    return { status: response.status };
   } catch (error) {
-    console.log(error);
-    return false;
+    const { data, status } = await error.response;
+    const errorMessage = getError(data);
+    return { status, message: errorMessage };
   }
 };

@@ -25,12 +25,12 @@ function LogIn() {
   }, []);
 
   const onSubmit = async ({ username, password }) => {
-    const status = await logIn({ username, password });
+    const errorMessage = await logIn({ username, password });
 
-    if (status) {
+    if (!errorMessage) {
       navigate('/', { replace: true });
     } else {
-      global.alert('Incorrect username or password');
+      global.alert(errorMessage);
     }
   };
 

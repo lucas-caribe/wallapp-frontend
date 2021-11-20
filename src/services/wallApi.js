@@ -4,12 +4,6 @@ const defaultHeaders = {
   'Content-Type': 'application/json',
 };
 
-const sessionToken = sessionStorage.token;
-
-if (sessionToken) {
-  defaultHeaders.Authorization = `Token ${sessionToken}`;
-}
-
 const instance = axios.create({
   baseURL: 'http://localhost:8000/',
   timeout: 5000,

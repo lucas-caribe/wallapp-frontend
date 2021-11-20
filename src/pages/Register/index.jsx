@@ -27,12 +27,12 @@ function Register() {
   }, []);
 
   const onSubmit = async (data) => {
-    const status = await userRegister(data);
+    const errorMessage = await userRegister(data);
 
-    if (status) {
+    if (!errorMessage) {
       navigate('/', { replace: true });
     } else {
-      global.alert('Username or email already exists!');
+      global.alert(errorMessage);
     }
   };
 
