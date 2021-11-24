@@ -89,6 +89,10 @@ export const userRegister = async (userData) => {
 
     return { status: response.status };
   } catch (error) {
+    if (!error.response) {
+      return { status: '503', message: 'Service unavailable' };
+    }
+
     const { data, status } = await error.response;
     const errorMessage = getError(data);
     return { status, message: errorMessage };

@@ -45,7 +45,11 @@ function Register() {
           type="text"
           placeholder="username"
           registerCallback={() =>
-            register('username', { required: 'You must specify a username' })
+            register('username', {
+              required: 'You must specify a username',
+              validate: (value) =>
+                /^[a-z0-9]{4,}$/.test(value) || 'Only characters and numbers',
+            })
           }
           error={errors.username}
           icon={FaUser}
